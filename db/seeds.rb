@@ -2,8 +2,6 @@ Game.delete_all
 User.delete_all
 Tag.delete_all
 
-base_uri = 'https://bgg-json.azurewebsites.net'
-
 def get_hot_games
   HTTParty.get("https://bgg-json.azurewebsites.net/hot")
 end
@@ -12,26 +10,24 @@ def get_game_info(game_id)
   HTTParty.get("https://bgg-json.azurewebsites.net/thing/#{game_id}")
 end
 
-def jason_parser(game_object)
+def json_parser(game_object)
   JSON.parse(game_object)
 end
 
 admin = User.create(username: 'cillin',email: 'collin@mail',password: 'password1')
-ap admin.id
 
 10.times do
-  User.find_or_create_by(username: Faker::Internet.user_name,email: Faker::Internet.email, password: 'password')
+  User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, password: 'password')
 end
 
 hot_games = get_hot_games
-hot_games_hash = jason_parser(hot_games)
+hot_games_hash = json_parser(hot_games)
 
 hot_games_hash.each do |game_object|
   game_id = game_object['gameId']
-  game_json_object = jason_parser(get_game_info(game_id))
+  game_json_object = json_parser(get_game_info(game_id))
 
-
-    game = Game.create!(
+    game = Game.find_or_create_by!(
       name:           game_json_object['name'],
       image:          game_json_object['image'],
       thumbnail:      game_json_object['thumbnail'],
