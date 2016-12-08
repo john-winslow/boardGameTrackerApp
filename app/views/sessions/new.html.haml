@@ -1,0 +1,12 @@
+%h1 Log in 
+= form_for(:session, url: login_path) do |f|
+  = f.label :username
+  = f.text_field :username
+  = f.label :password
+  = f.password_field :password
+  = f.submit "Log in"
+%p
+  New user? #{link_to "Sign up now!", login_path}
+
+- if flash[:danger]
+  = flash[:danger]
