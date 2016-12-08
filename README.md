@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+Team Name: GameTrackers
+Team Members: 
+  -Collin Shelby
+  -John Winslow
+  -Brandon Huang
+  -Christian Acuna
