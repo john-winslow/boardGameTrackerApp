@@ -17,7 +17,7 @@ end
 admin = User.create(username: 'cillin',email: 'collin@mail',password: 'password1')
 
 10.times do
-  User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, password: 'password')
+  User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, password: Faker::Internet.password)
 end
 
 hot_games = get_hot_games
