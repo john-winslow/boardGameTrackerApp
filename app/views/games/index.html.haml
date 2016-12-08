@@ -1,0 +1,5 @@
+.ui.main.container
+  .grid
+    - @games.each do |game|
+      .grid-item
+        %img{:src => "https:#{game.thumbnail}"}
