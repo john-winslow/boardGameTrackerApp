@@ -1,8 +1,3 @@
-require 'json'
-require 'awesome_print'
-require 'httparty'
-require 'faker'
-
 Game.delete_all
 User.delete_all
 Tag.delete_all
@@ -25,7 +20,7 @@ admin = User.create(username: 'cillin',email: 'collin@mail',password: 'password1
 ap admin.id
 
 10.times do
-  User.create(username: Faker::Internet.user_name,email: Faker::Internet.email, password: 'password')
+  User.find_or_create_by(username: Faker::Internet.user_name,email: Faker::Internet.email, password: 'password')
 end
 
 hot_games = get_hot_games
