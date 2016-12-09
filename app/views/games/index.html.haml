@@ -2,4 +2,11 @@
   #masonry-container.transitions-enabled.infinite-scroll.clearfix.centered
     - @games.each do |game|
       .box
+        - if current_user && has_game?(game)
+          %a.ui.right.corner.label.green
+            %i.check.square.icon
+        - elsif current_user 
+          %a.ui.right.corner.label.red
+            %i.add.square.icon
         %img{:src => "https:#{game.thumbnail}"}
+          
