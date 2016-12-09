@@ -19,6 +19,7 @@
           = f.label :author
           = f.text_field :author
           = f.submit "Comment", :class => 'ui button'
+          %button.ui.inverted.violet.button View Game
           - game.tags.each do |tag|
             .ui.label= tag.name
             - game.comments.each do |comment|
