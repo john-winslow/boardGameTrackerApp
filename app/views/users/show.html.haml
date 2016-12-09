@@ -13,6 +13,12 @@
           .description
             %p=raw game.description
           .extra
+        =form_for(:comment, url: comments_path, :html => {:class => "ui form"} ) do |f|
+          = f.label :body
+          = f.text_field :body
+          = f.label :author
+          = f.text_field :author
+          = f.submit "Comment", :class => 'ui button'
           - game.tags.each do |tag|
             .ui.label= tag.name
             - game.comments.each do |comment|
@@ -21,16 +27,3 @@
                   %a.author= comment.author
                   .text
                     %p= comment.body
-          -# .ui.form
-          -#   .field
-          -#     %br
-          -#     %label Comment Here:
-          -#     %textarea{:rows => "2"}
-
-          -# = form_for(:comments, url: new_comment_path) do |f|
-          -#   = f.label :body
-          -#   = f.text_field :body
-          -#   = f.label :author
-          -#   = f.password_field :author_id
-          -#   -# = f.submit "comment!"
-          
