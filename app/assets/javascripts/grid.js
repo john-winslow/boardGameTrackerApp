@@ -1,5 +1,9 @@
-$(function() {
-  $('.grid').masonry({
-    itemSelector: '.grid-item'
+$(function(){
+
+  $('#masonry-container').masonry({
+    itemSelector: '.box',
+    columnWidth: 1,
+    isFitWidth: true
   });
+
 });
