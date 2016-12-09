@@ -1,9 +1,10 @@
 - if current_user
   = link_to "Log out", logout_path
 - else
-  = link_to "Register", new_user_path, class: "register"
+  = link_to "Register", new_user_path, id: "register"
   = link_to "Log in", login_path, id: "login"
 
 
 =render 'users/modal_form'
+=render 'users/modal_register'
 
