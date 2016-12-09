@@ -12,8 +12,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    p "*************************"
-    p @user.valid?
     if @user.save
       redirect_to '/'
     else
@@ -21,7 +19,7 @@ class UsersController < ApplicationController
     end
   end
 
-  private
+  private   
     def user_params
       params.require(:user).permit(:username, :email, :password)
     end

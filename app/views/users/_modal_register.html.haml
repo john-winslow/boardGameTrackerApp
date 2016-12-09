@@ -1,0 +1,14 @@
+.ui.large.modal.register
+  .header Register
+  .content
+    = form_for(:user, url: users_path, :html => {:class => "ui form"}) do |f|
+      .field
+        = f.label :username
+        = f.text_field :username
+      .field
+        = f.label :email
+        = f.email_field :email
+      .field
+        = f.label :password
+        = f.password_field :password
+      = f.submit "Register", :class => 'ui button'
