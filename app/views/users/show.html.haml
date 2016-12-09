@@ -1,6 +1,22 @@
 .ui.main.text.container
   %h1.ui.header
     = @user.username
+  %h2 
+    Comments
+  - @user.comments.each do |comment|
+    .ui.comments
+      .content
+        %a.author= comment.author
+        .text
+          %p= comment.body
+  =form_for(:comment, url: comments_path, :html => {:class => "ui form"} ) do |f|
+    = f.label :body
+    = f.text_field :body
+    = f.label :author
+    = f.text_field :author
+    = f.submit "Comment", :class => 'ui button'
+  %h2
+    user created games
   .ui.divided.items
     - @user.created_games.each do |game|
       .item
@@ -15,12 +31,8 @@
           .extra
           - game.tags.each do |tag|
             .ui.label= tag.name
-            - game.comments.each do |comment|
-              .ui.comments
-                .content
-                  %a.author= comment.author
-                  .text
-                    %p= comment.body              
+          %button.ui.inverted.violet.button View Game
+            
   %h3 friends list             
   - @user.relationships.each do |relationship|
     = get_username(relationship.user_id_2)
@@ -29,5 +41,3 @@
     = f.hidden_field :user_id, value: current_user.id
     = f.hidden_field :user_id_2, value: @user.id
     = f.submit value="add friend"
-      
-          

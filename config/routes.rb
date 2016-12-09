@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   get '/' => 'games#index'
   # get 'sessions/new'
 
-  resources :users
-  root 'users#index'
+  resources :comments
 
+  resources :users
+  
   resources :games
 
   get '/games/:id' => 'games#show'
