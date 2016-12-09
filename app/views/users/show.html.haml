@@ -1,35 +1,53 @@
-%h1
-  = @user.username
-%ul
-- @user.games.each do |game|
-  %li= game.name
-- @user.created_games.each do |game|
-  
-  %li
-    Name: #{game.name}
-  
-  %li
-    %img{:src => "https:#{game.thumbnail}"}
-  
-  %li
-    Thumbnail: #{game.thumbnail}
-  
-  %li
-    Description: #{game.description}
-  
-  %li
-    Min Players: #{game.min_players}
-  
-  %li
-    Max Players: #{game.max_players}
-  
-  %li
-    Year Published: #{game.year_published}
-  
-  %li
-    Playing Time: #{game.playing_time}
-  
-  %li
-    Adder: #{@user.username}
-  
-%textarea Comment.
+.ui.main.text.container
+  %h1.ui.header
+    = @user.username
+  .ui.divided.items
+    - @user.created_games.each do |game|
+      .item
+        .image
+          %img{:src => "https:#{game.thumbnail}"}/
+        .content
+          %a.header= game.name
+          .meta
+            %span.cinema= game.year_published
+          .description
+            %p= raw game.description
+          .extra
+          - game.tags.each do |tag|
+            .ui.label= tag.name
+            .ui.label
+              -# %i.globe.icon
+              -# Additional Languages
+
+  -# %ul
+
+  -# - @user.created_games.each do |game|
+    
+  -#   %li
+  -#     Name: #{game.name}
+    
+  -#   %li
+  -#     %img{:src => "https:#{game.thumbnail}"}
+    
+  -#   %li
+  -#     Thumbnail: #{game.thumbnail}
+    
+  -#   %li
+  -#     Description: #{game.description}
+    
+  -#   %li
+  -#     Min Players: #{game.min_players}
+    
+  -#   %li
+  -#     Max Players: #{game.max_players}
+    
+  -#   %li
+  -#     Year Published: #{game.year_published}
+    
+  -#   %li
+  -#     Playing Time: #{game.playing_time}
+    
+  -#   %li
+  -#     Adder: #{@user.username}
+    
+  -# %textarea Comment.
