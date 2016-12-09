@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   post '/login'       => 'sessions#create'
   get 'logout'        => 'sessions#delete'
 
+  resources :relationships
+
 end
