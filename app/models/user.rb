@@ -6,6 +6,5 @@ class User < ApplicationRecord
   has_many :user_games
   has_many :games, through: :user_games
   has_many :comments, as: :commentable
-  has_many :comments, foreign_key: 'author_id'
   has_many :votes, foreign_key: 'voter_id'
 end

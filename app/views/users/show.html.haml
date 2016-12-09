@@ -1,6 +1,22 @@
 .ui.main.text.container
   %h1.ui.header
     = @user.username
+  %h2 
+    Comments
+  - @user.comments.each do |comment|
+    .ui.comments
+      .content
+        %a.author= comment.author
+        .text
+          %p= comment.body
+  =form_for(:comment, url: comments_path, :html => {:class => "ui form"} ) do |f|
+    = f.label :body
+    = f.text_field :body
+    = f.label :author
+    = f.text_field :author
+    = f.submit "Comment", :class => 'ui button'
+  %h2
+    user created games
   .ui.divided.items
     - @user.created_games.each do |game|
       .item
@@ -15,22 +31,4 @@
           .extra
           - game.tags.each do |tag|
             .ui.label= tag.name
-            - game.comments.each do |comment|
-              .ui.comments
-                .content
-                  %a.author= comment.author
-                  .text
-                    %p= comment.body
-          -# .ui.form
-          -#   .field
-          -#     %br
-          -#     %label Comment Here:
-          -#     %textarea{:rows => "2"}
-
-          -# = form_for(:comments, url: new_comment_path) do |f|
-          -#   = f.label :body
-          -#   = f.text_field :body
-          -#   = f.label :author
-          -#   = f.password_field :author_id
-          -#   -# = f.submit "comment!"
-          
+          %button.ui.inverted.violet.button View Game

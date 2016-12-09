@@ -3,11 +3,14 @@ class CommentsController < ApplicationController
   end
 
   def new
+    @comment = Comment.new()
   end
 
   def create
     @comment = Comment.new(body: params[:body], author_id: params[:author_id])
-    'cool' if @comment.save
-    'fudge you'
+    if @comment.save
+      redirect_to 'users#show'
+      else
+      end
   end
 end
