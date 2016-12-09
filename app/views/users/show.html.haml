@@ -11,13 +11,10 @@
           .meta
             %span.cinema= game.year_published
           .description
-            %p= raw game.description
+            %p=raw game.description
           .extra
           - game.tags.each do |tag|
             .ui.label= tag.name
-            .ui.label
-              -# %i.globe.icon
-              -# Additional Languages
 
   -# %ul
 
