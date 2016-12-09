@@ -32,3 +32,12 @@
           - game.tags.each do |tag|
             .ui.label= tag.name
           %button.ui.inverted.violet.button View Game
+            
+  %h3 friends list             
+  - @user.relationships.each do |relationship|
+    = get_username(relationship.user_id_2)
+    %br  
+  = form_for @user.relationships.build do |f|
+    = f.hidden_field :user_id, value: current_user.id
+    = f.hidden_field :user_id_2, value: @user.id
+    = f.submit value="add friend"
