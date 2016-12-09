@@ -15,36 +15,23 @@
           .extra
           - game.tags.each do |tag|
             .ui.label= tag.name
+            - game.comments.each do |comment|
+              .ui.comments
+                .content
+                  %a.author= comment.author
+                  .text
+                    %p= comment.body
+          -# .ui.form
+          -#   .field
+          -#     %br
+          -#     %label Comment Here:
+          -#     %textarea{:rows => "2"}
 
-  -# %ul
-
-  -# - @user.created_games.each do |game|
-    
-  -#   %li
-  -#     Name: #{game.name}
-    
-  -#   %li
-  -#     %img{:src => "https:#{game.thumbnail}"}
-    
-  -#   %li
-  -#     Thumbnail: #{game.thumbnail}
-    
-  -#   %li
-  -#     Description: #{game.description}
-    
-  -#   %li
-  -#     Min Players: #{game.min_players}
-    
-  -#   %li
-  -#     Max Players: #{game.max_players}
-    
-  -#   %li
-  -#     Year Published: #{game.year_published}
-    
-  -#   %li
-  -#     Playing Time: #{game.playing_time}
-    
-  -#   %li
-  -#     Adder: #{@user.username}
-    
-  -# %textarea Comment.
+          -# = form_for(:comments, url: new_comment_path) do |f|
+          -#   = f.label :body
+          -#   = f.text_field :body
+          -#   = f.label :author
+          -#   = f.password_field :author_id
+          -#   -# = f.submit "comment!"
+          %button.ui.inverted.violet.button View Game
+          - link_to comment_path
