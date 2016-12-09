@@ -20,17 +20,14 @@
                 .content
                   %a.author= comment.author
                   .text
-                    %p= comment.body
-          -# .ui.form
-          -#   .field
-          -#     %br
-          -#     %label Comment Here:
-          -#     %textarea{:rows => "2"}
-
-          -# = form_for(:comments, url: new_comment_path) do |f|
-          -#   = f.label :body
-          -#   = f.text_field :body
-          -#   = f.label :author
-          -#   = f.password_field :author_id
-          -#   -# = f.submit "comment!"
+                    %p= comment.body              
+  %h3 friends list             
+  - @user.relationships.each do |relationship|
+    = get_username(relationship.user_id_2)
+    %br  
+  = form_for @user.relationships.build do |f|
+    = f.hidden_field :user_id, value: current_user.id
+    = f.hidden_field :user_id_2, value: @user.id
+    = f.submit value="add friend"
+      
           
