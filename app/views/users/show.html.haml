@@ -1,5 +1,35 @@
 %h1
-  User Show
-  %h1
-    = @user.username,
-    = @user.email
+  = @user.username
+%ul
+- @user.games.each do |game|
+  %li= game.name
+- @user.created_games.each do |game|
+  
+  %li
+    Name: #{game.name}
+  
+  %li
+    %img{:src => "https:#{game.thumbnail}"}
+  
+  %li
+    Thumbnail: #{game.thumbnail}
+  
+  %li
+    Description: #{game.description}
+  
+  %li
+    Min Players: #{game.min_players}
+  
+  %li
+    Max Players: #{game.max_players}
+  
+  %li
+    Year Published: #{game.year_published}
+  
+  %li
+    Playing Time: #{game.playing_time}
+  
+  %li
+    Adder: #{@user.username}
+  
+%textarea Comment.
