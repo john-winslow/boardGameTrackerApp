@@ -3,7 +3,7 @@
     = @user.username
   %h2 
     Comments
-  - @user.comments.each do |comment|
+  - @comments.each do |comment|
     .ui.comments
       .content
         %a.author= comment.author.username

@@ -9,12 +9,9 @@ class CommentsController < ApplicationController
 
   def create
     @user = User.find(session[:user_id])
-    p 'hey there im in the create *******************************************'
-    p params[:body]
-    p @comment = @user.comments.new(body: params[:body],author_id: @user.id)
-    p @comment.valid?
+    @comment = @user.comments.new(body: params[:comment][:body],author_id: @user.id)
     if @comment.save
-      redirect_to '/'
+      redirect_to user_path(@user)
       else
         flash[:danger] = 'Error: Wrong Input, Please try again.'
         redirect_to '/'
