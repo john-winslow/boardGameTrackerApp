@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @user = User.find(session[:user_id])
     @comment = @user.comments.create(body: params[:body],author_id: session[:user_id])
     if @comment.save
-      redirect_to 'users#show'
+      redirect_to '/'
       else
         flash[:danger] = 'Error: Wrong Input, Please try again.'
       end

@@ -12,8 +12,6 @@
   =form_for(:comment, url: comments_path, :html => {:class => "ui form"} ) do |f|
     = f.label :body
     = f.text_field :body
-    = f.label :author
-    = f.text_field :author
     = f.submit "Comment", :class => 'ui button'
   %h2
     user created games
