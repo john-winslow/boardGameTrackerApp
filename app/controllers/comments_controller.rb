@@ -7,10 +7,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(body: params[:body], author_id: params[:author_id])
+    @user = User.find(session[:user_id])
+    @comment = @user.comments.create(body: params[:body],author_id: session[:user_id])
     if @comment.save
       redirect_to 'users#show'
       else
+        flash[:danger] = 'Error: Wrong Input, Please try again.'
       end
   end
 end
