@@ -6,17 +6,18 @@
   - @user.comments.each do |comment|
     .ui.comments
       .content
-        %a.author= comment.author
+        %a.author= comment.author.username
         .text
+          %p comment body
           %p= comment.body
-  =form_for(:comment, url: comments_path, :html => {:class => "ui form"} ) do |f|
+  =form_for([@user, Comment.new], :html => {:class => "ui form"} )  do |f|
     = f.label :body
     = f.text_field :body
     = f.submit "Comment", :class => 'ui button'
   %h2
     user created games
   .ui.divided.items
-    - @user.created_games.each do |game|
+    - @games.each do |game|
       .item
         .image
           %img{:src => "https:#{game.thumbnail}"}/
@@ -29,8 +30,8 @@
           .extra
           - game.tags.each do |tag|
             .ui.label= tag.name
-          %button.ui.inverted.violet.button View Game
-            
+          -# %button.ui.inverted.violet.button 
+          = link_to 'View Game', game_path(game)
   %h3 friends list             
   - @user.relationships.each do |relationship|
     = get_username(relationship.user_id_2)

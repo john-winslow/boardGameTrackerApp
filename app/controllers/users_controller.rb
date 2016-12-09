@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # @comment = Comment.new()
+    @games = @user.created_games
   end
 
   def new
