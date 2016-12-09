@@ -1,0 +1,20 @@
+.ui.main.text.container
+  .ui.divided.items
+    .item
+      .image
+        %img{:src => "https:#{@game.thumbnail}"}/
+      .content
+        %a.header= @game.name
+        .meta
+          %span.cinema Union Square 14
+        .description
+          %p= raw @game.description
+        .extra
+        - @game.tags.each do |tag|
+          .ui.label= tag.name
+      .ui.form
+        .field
+          %br
+          %label Comment Here:
+          %textarea{:rows => "2"}
+        %button.ui.inverted.violet.button View Game
