@@ -12,6 +12,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    p "*************************"
+    p @user.valid?
     if @user.save
       redirect_to '/'
     else
