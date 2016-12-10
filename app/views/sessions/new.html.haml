@@ -1,0 +1,16 @@
+%h1 Log in 
+.ui.main.text.container
+  =form_for(:session, url: login_path, :html => {:class => "ui form"} ) do |f|
+    .field
+      = f.label :username
+      = f.text_field :username
+    .field
+      = f.label :password
+      = f.password_field :password
+    = f.submit "Log in", :class => 'ui button'
+
+  %p
+    New user? #{link_to "Sign up now!", login_path}
+
+  - if flash[:danger]
+    = flash[:danger]

@@ -1,0 +1,14 @@
+%h1 Sign up3
+
+.ui.main.text.container
+  = form_for @user, :html => {:class => "ui form"} do |f|
+    .field
+      = f.label :username
+      = f.text_field :username
+    .field
+      = f.label :email
+      = f.email_field :email
+    .field
+      = f.label :password
+      = f.password_field :password
+    = f.submit "Create my account", :class => 'ui button'

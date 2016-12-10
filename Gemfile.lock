@@ -60,6 +60,8 @@ GEM
     ffi (1.9.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    haml (4.0.7)
+      tilt
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
@@ -77,6 +79,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    masonry-rails (0.2.4)
+      railties
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -84,7 +88,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
-    multi_xml (0.6.0)
+    multi_xml (0.5.5)
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
@@ -172,10 +176,12 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   faker
+  haml
   httparty
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+  masonry-rails
   pg (~> 0.18)
   pry
   puma (~> 3.0)

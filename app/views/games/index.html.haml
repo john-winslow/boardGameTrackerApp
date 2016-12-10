@@ -1,0 +1,16 @@
+.ui.main.text.container
+  #masonry-container.transitions-enabled.infinite-scroll.clearfix.centered
+    - @games.each do |game|
+      .box
+        - if current_user && has_game?(game)
+          %a.ui.right.corner.label.green
+            %i.check.square.icon
+        - elsif current_user 
+          = form_for :user_games, :url => {:controller =>'/user_games', :action => 'create'}, remote: true, :html => {id: "#{game.id}"} do |f|
+            = f.hidden_field :id, value: game.id 
+            = f.submit '', class: 'ui right corner label blue overlay'
+          %a.ui.right.corner.label.red
+            %i.add.square.icon
+        %img{:src => "https:#{game.thumbnail}"}
+
+  

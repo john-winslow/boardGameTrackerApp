@@ -1,3 +1,23 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/' => 'games#index'
+  # get 'sessions/new'
+  resources :relationships, only: [:create]
+  
+  resources :users do
+    resources :comments
+    resources :games 
+  end
+  
+  resources :games do 
+    resources :comments
+  end
+
+  get '/games/:id'    => 'games#show'
+  get '/login'        => 'sessions#new'
+  post '/login'       => 'sessions#create'
+  get 'logout'        => 'sessions#delete'
+
+  
+  resources :user_games, only: [:create]
+
 end

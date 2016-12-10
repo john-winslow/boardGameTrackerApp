@@ -1,0 +1,43 @@
+.ui.main.text.container
+  %h1.ui.header
+    = @user.username
+  %h2 
+    Comments
+  - @comments.each do |comment|
+    .ui.comments
+      .content
+        %a.author
+        = link_to "#{comment.author.username}", user_path(comment.author.id)
+        .text
+          %p comment body
+          %p= comment.body
+  =form_for([@user, Comment.new], :html => {:class => "ui form"} )  do |f|
+    = f.label :body
+    = f.text_field :body
+    = f.submit "Comment", :class => 'ui button'
+  %h2
+    Game Collection
+  .ui.divided.items
+    - @games.each do |game|
+      .item
+        .image
+          %img{:src => "https:#{game.thumbnail}"}/
+        .content
+          %a.header= game.name
+          .meta
+            %span.cinema= game.year_published
+          .description
+            %p=raw game.description
+          .extra
+          - game.tags.each do |tag|
+            .ui.label= tag.name
+          -# %button.ui.inverted.violet.button 
+          = link_to 'View Game', game_path(game)
+  %h3 friends list             
+  - @user.relationships.each do |relationship|
+    = get_username(relationship.user_id_2)
+    %br  
+  = form_for @user.relationships.build do |f|
+    = f.hidden_field :user_id, value: current_user.id
+    = f.hidden_field :user_id_2, value: @user.id
+    = f.submit value="add friend"
