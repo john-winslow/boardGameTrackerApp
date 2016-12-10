@@ -1,0 +1,9 @@
+var gameId = <%= @game.id %>
+
+var link = $('#' + gameId).siblings('a')
+console.log(link);
+link.removeClass('red').addClass('green');
+// debugger
+var icon = $(link.children()[0])
+icon.removeClass('add square').addClass('check square')
+console.log(icon)

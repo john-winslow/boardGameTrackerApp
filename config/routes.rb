@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  resources :users
+  resources :users do
+    resources :games
+  end
+  resources :relationships, only: [:create]
   
   resources :games
 
@@ -13,6 +16,7 @@ Rails.application.routes.draw do
   post '/login'       => 'sessions#create'
   get 'logout'        => 'sessions#delete'
 
-  resources :relationships
+  
+  resources :user_games, only: [:create]
 
 end
