@@ -1,5 +1,5 @@
 .ui.main.text.container
   #masonry-container.transitions-enabled.infinite-scroll.clearfix.centered
     - @games.each do |game|
-      .box
+      .box.gamepic
         %img{:src => "https:#{game.thumbnail}"}
