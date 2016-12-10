@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get '/' => 'games#index'
   # get 'sessions/new'
+  resources :relationships, only: [:create]
+  
   resources :users do
     resources :comments
     resources :games 
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
   post '/login'       => 'sessions#create'
   get 'logout'        => 'sessions#delete'
 
-  resources :relationships
+  
+  resources :user_games, only: [:create]
 
 end
