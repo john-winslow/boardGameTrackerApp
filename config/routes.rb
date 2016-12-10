@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   resources :users do
     resources :comments
     resources :games 
-  end 
-
-  resources :comments
+  end
   
-  resources :games
+  resources :games do 
+    resources :comments
+  end
 
   get '/games/:id'    => 'games#show'
   get '/login'        => 'sessions#new'

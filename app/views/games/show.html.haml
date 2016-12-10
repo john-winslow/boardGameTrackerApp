@@ -10,13 +10,14 @@
         .description
           %p= raw @game.description
         .extra
-        =form_for(:comment, url: comments_path, :html => {:class => "ui form"} ) do |f|
+          - @game.comments.each do |comment|
+            %h2 Comment Body:
+            %p= comment.body
+            %h2= comment.author.username
+
+        =form_for([@game, Comment.new], :html => {:class => "ui form"} ) do |f|
           = f.label :body
           = f.text_field :body
-          = f.label :author
-          = f.text_field :author
           = f.submit "Comment", :class => 'ui button'
-        %button.ui.inverted.violet.button View Game
         - @game.tags.each do |tag|
           .ui.label= tag.name
-      .ui.form

@@ -6,7 +6,8 @@
   - @comments.each do |comment|
     .ui.comments
       .content
-        %a.author= comment.author.username
+        %a.author
+        = link_to "#{comment.author.username}", user_path(comment.author.id)
         .text
           %p comment body
           %p= comment.body
