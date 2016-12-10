@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   get '/' => 'games#index'
   # get 'sessions/new'
-  resources :users
-
-  resources :comments
-
   resources :relationships, only: [:create]
   
-  resources :games
+  resources :users do
+    resources :comments
+    resources :games 
+  end
+  
+  resources :games do 
+    resources :comments
+  end
 
   get '/games/:id'    => 'games#show'
   get '/login'        => 'sessions#new'
