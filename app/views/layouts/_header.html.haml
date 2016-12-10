@@ -1,8 +1,13 @@
 - if current_user
-  = link_to "Log out", logout_path
+  .ui.main.text.container
+    = link_to "Home", games_path
+    = link_to "Profile", user_path(@current_user)
+    = link_to "Log out", logout_path
 - else
-  = link_to "Register", new_user_path, id: "register"
-  = link_to "Log in", login_path, id: "login"
+  .ui.main.text.container
+    = link_to "Home", games_path
+    = link_to "Log in", login_path, id: "login"
+    = link_to "Register", new_user_path, id: "register"
 
 
 =render 'users/modal_form'
