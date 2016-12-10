@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @comments = @user.comments
-    @games = @user.created_games
+    @games = @user.games
   end
 
   def new
