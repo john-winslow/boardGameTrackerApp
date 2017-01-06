@@ -3,13 +3,13 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @user = current_user
-    @comment = @user.comments.new
+    @comment = Comment.new
   end
 
   def create
     @user = User.find(session[:user_id])
-    # @game = Game.find(params[:game_id])
+    @game = Game.find(params[:game_id])
+
     if @game
       comment = @game.comments.new(body: params[:comment][:body],author_id: @user.id)
 

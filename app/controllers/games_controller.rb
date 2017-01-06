@@ -5,6 +5,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @comment = Comment.new
   end
 
   def new 
@@ -15,7 +16,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.find(params[:id])
     @comment = @game.comments.new
-
+    p 'hey **********************'
     if @comment.save
       redirect game_path(@game)
     else
