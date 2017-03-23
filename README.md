@@ -28,7 +28,7 @@ Team Members:
   -John Winslow
   -Brandon Huang
   -Christian Acuna
-  
+
 User Stories
 * a user can sign up for an account with username, email, and password
 * A user can see all board games without being logged in
